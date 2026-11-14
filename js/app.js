@@ -76,10 +76,6 @@ $$('form.f').forEach(function(f){
    fetch('https://api.telegram.org/bot'+C.bot.token+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C.bot.chat,text:text,disable_web_page_preview:true})})
     .then(function(r){return r.json()}).then(function(j){btn.disabled=false;if(j.ok)ok('Заявка отправлена! Денис свяжется с вами в ближайшее время.');else viaLink()}).catch(function(){btn.disabled=false;viaLink()})}
   else viaLink()})});
-/* lenis на десктопе */
-if(!matchMedia('(pointer:coarse)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches&&innerWidth>1020){
- var sc=d.createElement('script');sc.src='/js/lenis.min.js';sc.onload=function(){try{var L=new Lenis({lerp:.075,wheelMultiplier:.9,smoothWheel:true});window.__L=L;(function r(t){L.raf(t);requestAnimationFrame(r)})(performance.now());
-  $$('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=$(a.getAttribute('href'));if(t){e.preventDefault();L.scrollTo(t,{offset:-60})}})})}catch(x){}};d.head.appendChild(sc)}
 /* tilt */
 if(!matchMedia('(pointer:coarse)').matches)$$('.card,.bc').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateY('+x*5+'deg) rotateX('+(-y*5)+'deg) translateY(-6px)'});c.addEventListener('mouseleave',function(){c.style.transform=''})});
 

@@ -47,7 +47,7 @@ p{color:var(--tx)}
 .nav{display:flex;gap:clamp(14px,2.2vw,30px);align-items:center}
 .nav a{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#c2c9d1;position:relative;padding:8px 0;transition:color .3s}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:var(--ice);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
-.nav a:hover,.nav a.on{color:#fff}.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+
 .hd .btn{padding:11px 22px;min-height:42px;font-size:.7rem}
 .burger{display:none;width:46px;height:46px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.04);cursor:pointer;position:relative;flex:none}
 .burger i{position:absolute;left:14px;right:14px;height:1.5px;background:#fff;transition:transform .4s var(--ease),opacity .2s,top .4s var(--ease)}
@@ -473,3 +473,12 @@ body{letter-spacing:0}
 .ft .legal .dev b{font-family:Unbounded,Onest,sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.08em}
 .ft .legal .dev:hover .dl{border-color:var(--ice);background:rgba(159,216,255,.07);color:#fff}
 @media(hover:none){.ft .legal .dev:hover .dl{border-color:var(--line);background:rgba(255,255,255,.03);color:#dfe4e9}}
+
+/* меню: хромированный шрифт как у заголовков */
+html{scroll-padding-top:70px}
+.nav{gap:clamp(18px,2.4vw,38px)}
+.nav a{font-family:Radiotechnika,Manrope,sans-serif;font-weight:400;font-size:clamp(.95rem,1.15vw,1.2rem);letter-spacing:.06em;line-height:1.1;padding:10px 0;color:#c9ced3;
+background:var(--shade),var(--chrome);background-size:100% 100%,220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 7s linear infinite;transition:filter .3s}
+.nav a::after{height:2px;bottom:3px;background:linear-gradient(90deg,#9fd8ff,#2f7bff);-webkit-text-fill-color:initial}
+.nav a:hover{background:var(--shade),linear-gradient(96deg,#2f7bff 0%,#9fd8ff 30%,#ffffff 50%,#9fd8ff 70%,#2f7bff 100%);background-size:100% 100%,220% 100%;-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 8px rgba(47,123,255,.55))}
+.nav a:hover::after{transform:scaleX(1)}
