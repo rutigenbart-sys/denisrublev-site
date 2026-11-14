@@ -34,7 +34,7 @@ $$('[data-to]').forEach(function(el){if(co){el.textContent=fmtN(el,0);co.observe
 /* видео-фон */
 var v=$('.hero video');
 if(v){var save=navigator.connection&&(navigator.connection.saveData||/2g/.test(navigator.connection.effectiveType||''));
- var mob=matchMedia('(max-width:760px)').matches||(navigator.connection&&navigator.connection.effectiveType==='3g');
+ var mob=matchMedia('(max-width:760px) and (orientation:portrait)').matches;
  if(!save&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
   v.src=mob?v.dataset.m:v.dataset.d;v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.playsInline=true;v.dataset.want='1';
   var go=function(){v.play().then(function(){v.classList.add('on')}).catch(function(){})};
