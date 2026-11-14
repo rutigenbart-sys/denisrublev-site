@@ -16,7 +16,7 @@ if(bg&&mn){bg.addEventListener('click',function(){var o=mn.classList.toggle('ope
  $$('a',mn).forEach(function(a){a.addEventListener('click',function(){mn.classList.remove('open');bg.classList.remove('x');d.body.classList.remove('lock')})})}
 /* reveal */
 var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -8% 0px'}):null;
-$$('main h2,main .bc,.tl>*,.gal>*,.ct,.st,.box,.faq details').forEach(function(el){if(!el.classList.contains('rv')&&!el.closest('.hero')&&!el.closest('form')){el.classList.add('rv')}});
+$$('main h2,main .bc,.about .prose p,.about .abt>p,.tl>*,.gal>*,.ct,.st,.box,.faq details').forEach(function(el){if(!el.classList.contains('rv')&&!el.closest('.hero')&&!el.closest('form')){el.classList.add('rv')}});
 $$('.rv').forEach(function(el){var p=el.parentElement,k=p?Array.prototype.indexOf.call(p.children,el):0;
  var st=!/^H/.test(el.tagName)&&!el.closest('.faq')&&!el.classList.contains('mq');
  el.style.setProperty('--rd',st?((k%3)*80)+'ms':'0ms')});
