@@ -36,7 +36,7 @@ var v=$('.hero video');
 if(v){var save=navigator.connection&&(navigator.connection.saveData||/2g/.test(navigator.connection.effectiveType||''));
  var mob=matchMedia('(max-width:760px)').matches||(navigator.connection&&navigator.connection.effectiveType==='3g');
  if(!save&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
-  v.src=mob?v.dataset.m:v.dataset.d;v.muted=true;v.playsInline=true;v.dataset.want='1';
+  v.src=mob?v.dataset.m:v.dataset.d;v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.playsInline=true;v.dataset.want='1';
   var go=function(){v.play().then(function(){v.classList.add('on')}).catch(function(){})};
   v.addEventListener('canplay',go,{once:true});v.load();
   ['touchstart','pointerdown','scroll','click'].forEach(function(ev){addEventListener(ev,function(){if(v.paused&&v.dataset.want==='1'&&scrollY<innerHeight)go()},{passive:true})});v.addEventListener('stalled',function(){if(v.dataset.want==='1')v.load()});
