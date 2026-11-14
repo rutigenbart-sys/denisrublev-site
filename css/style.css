@@ -463,3 +463,13 @@ body{letter-spacing:0}
 .hero::before{background:linear-gradient(rgba(6,7,10,.1),rgba(6,7,10,.1)),radial-gradient(90% 70% at 30% 55%,rgba(6,7,10,.08),rgba(6,7,10,.5)),linear-gradient(180deg,rgba(6,7,10,.62) 0%,rgba(6,7,10,.04) 28%,rgba(6,7,10,.22) 62%,var(--bg) 100%)}
 .hero .sub,.hero .eyebrow{text-shadow:0 2px 18px rgba(0,0,0,.85),0 0 3px rgba(0,0,0,.6)}
 .hero .stats{background:linear-gradient(180deg,rgba(6,7,10,.3),rgba(6,7,10,.88))}
+
+/* разработчик сайта */
+@font-face{font-family:Unbounded;font-weight:200 900;font-display:swap;src:url(/fonts/unbounded-latin-wght-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+00B7,U+2000-206F}
+.ft .legal .dev{display:flex;align-items:center;flex-wrap:wrap;gap:12px 16px;margin-top:10px;padding:14px 0 0;color:#8b94a0;width:fit-content;border-top:1px solid var(--line);transition:color .3s}
+.ft .legal .dev small{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#6f7884}
+.ft .legal .dev .dl{display:inline-flex;align-items:center;gap:10px;padding:9px 16px 9px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);color:#dfe4e9;transition:border-color .35s,background .35s,color .35s}
+.ft .legal .dev svg{width:24px;height:24px;flex:none}
+.ft .legal .dev b{font-family:Unbounded,Onest,sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.08em}
+.ft .legal .dev:hover .dl{border-color:var(--ice);background:rgba(159,216,255,.07);color:#fff}
+@media(hover:none){.ft .legal .dev:hover .dl{border-color:var(--line);background:rgba(255,255,255,.03);color:#dfe4e9}}
