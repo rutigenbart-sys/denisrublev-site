@@ -482,3 +482,14 @@ background:var(--shade),var(--chrome);background-size:100% 100%,220% 100%;-webki
 .nav a::after{height:2px;bottom:3px;background:linear-gradient(90deg,#9fd8ff,#2f7bff);-webkit-text-fill-color:initial}
 .nav a:hover{background:var(--shade),linear-gradient(96deg,#2f7bff 0%,#9fd8ff 30%,#ffffff 50%,#9fd8ff 70%,#2f7bff 100%);background-size:100% 100%,220% 100%;-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 8px rgba(47,123,255,.55))}
 .nav a:hover::after{transform:scaleX(1)}
+/* hero: подпись-слоган */
+.hero .sub.tag{display:flex;flex-direction:column;gap:10px;max-width:none;position:relative;padding-left:18px;margin-top:4px}
+.hero .sub.tag::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:2px;border-radius:2px;background:linear-gradient(180deg,#fff,var(--ice) 45%,rgba(159,216,255,0))}
+.hero .sub.tag b{font-family:Radiotechnika,Onest,sans-serif;font-weight:400;font-size:clamp(1.15rem,2.6vw,1.9rem);line-height:1.1;letter-spacing:.06em;text-transform:uppercase;width:fit-content;
+ background:linear-gradient(100deg,#aeb6bf 0%,#ffffff 30%,#c9d0d7 55%,#ffffff 78%,#9aa3ad 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#e9edf0;text-shadow:none;filter:drop-shadow(0 2px 14px rgba(0,0,0,.75))}
+.hero .sub.tag span{font-size:clamp(.95rem,1.5vw,1.12rem);font-weight:400;line-height:1.5;color:#dfe5ea;max-width:36ch;letter-spacing:.01em}
+@media(max-width:760px){
+ .hero .sub.tag{padding-left:14px;gap:8px}
+ .hero .sub.tag b{font-size:1.22rem}
+ .hero .sub.tag span{font-size:.93rem;max-width:28ch;color:#e6ebef}
+}
