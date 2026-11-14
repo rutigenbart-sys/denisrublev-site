@@ -2,6 +2,7 @@
    затем второй проход света растворяет его и открывает сайт. */
 (function(){
 var pre=document.getElementById('pre');if(!pre)return;
+if(!document.documentElement.classList.contains('pre-active')){pre.remove();return}
 var body=document.body,root=document.documentElement,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 var seen=false;try{seen=sessionStorage.getItem('drpre')==='1'}catch(e){}
 body.classList.add('lock');
