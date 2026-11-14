@@ -371,3 +371,58 @@ h1.rv,h2.rv,h3.rv{transform:translate3d(0,14px,0)}
 .rv{filter:none!important;will-change:auto}
 .about .bgs::before{display:none!important}
 @media(max-width:1020px){.about .bgp img{filter:blur(1.5px) brightness(1.15) saturate(1.1)}}
+
+/* ===== v5: плавные появления, без наезжающих плашек ===== */
+.rv,.rv[data-v],h1.rv,h2.rv,h3.rv{opacity:0;transform:translate3d(0,26px,0);filter:none;clip-path:none;letter-spacing:inherit;
+ transition:opacity .85s cubic-bezier(.22,.8,.2,1),transform .95s cubic-bezier(.22,.8,.2,1);transition-delay:var(--rd,0ms)}
+.rv.in,.rv[data-v].in,h1.rv.in,h2.rv.in,h3.rv.in{opacity:1;transform:none;clip-path:none}
+.rv.d1,.rv.d2,.rv.d3{transition-delay:var(--rd,0ms)}
+.mq.rv{opacity:1!important;transform:none!important}
+.gal.rv,.faq.rv{transform:translate3d(0,26px,0)}.gal.rv.in,.faq.rv.in{transform:none}
+.faq details{margin:0}
+.faq summary{padding-right:2px}
+.ct,.lk,.card,.bc,.st{min-width:0}
+
+/* hero: темнее фон, меньше текста */
+.hero::before{background:linear-gradient(rgba(6,7,10,.42),rgba(6,7,10,.42)),radial-gradient(90% 70% at 30% 55%,rgba(6,7,10,.35),rgba(6,7,10,.86)),linear-gradient(180deg,rgba(6,7,10,.8) 0%,rgba(6,7,10,.3) 35%,rgba(6,7,10,.72) 78%,var(--bg) 100%)}
+.hero .sub{font-size:clamp(1rem,2.2vw,1.25rem);max-width:34ch;line-height:1.55;color:#e1e6ea;font-weight:500}
+.hero .eyebrow{font-size:.68rem;letter-spacing:.24em}
+.hero .in{will-change:transform,opacity}
+@media(max-width:760px){
+ .hero .in{padding:calc(var(--hh) + 28px) 0 190px}
+ .hero .eyebrow{font-size:.6rem;letter-spacing:.18em;gap:10px}
+ .hero .eyebrow::before{width:22px}
+ .hero .acts{flex-direction:column;align-items:stretch;gap:12px;margin-top:26px;max-width:340px}
+ .hero .acts .btn{width:100%}
+ .hero .sub{font-size:.98rem;max-width:30ch}
+ .st b{font-size:clamp(1.2rem,6vw,1.7rem)}
+ .st span{font-size:.6rem;letter-spacing:.1em}
+}
+
+/* плавающая кнопка */
+.sticky-cta{bottom:calc(14px + env(safe-area-inset-bottom));transition:transform .5s cubic-bezier(.22,.8,.2,1),opacity .4s}
+.sticky-cta::before{content:"";position:absolute;z-index:-1;inset:-34px -14px -16px;background:linear-gradient(0deg,rgba(6,7,10,.92),rgba(6,7,10,0));pointer-events:none}
+.sticky-cta.off{transform:translate3d(0,150%,0);opacity:0;pointer-events:none}
+.sticky-cta .btn{box-shadow:0 10px 30px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+
+/* убираем эффект нажатия/залипания на сенсорных экранах */
+a,button,summary,.btn,.chip,.lk,.ct,.card,.bc,.gal a{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+@media(hover:none),(pointer:coarse){
+ .btn,.btn:hover,.btn:active,.btn.main:hover{transform:none!important}
+ .btn:hover{border-color:rgba(255,255,255,.2)}.btn.main:hover{box-shadow:0 10px 34px rgba(159,216,255,.22),inset 0 1px 0 #fff}
+ .btn::after{display:none}
+ .chip:hover{border-color:var(--line);color:#b9c1ca}.chip:active{background:rgba(255,255,255,.03)}
+ .lk:hover,.ct:hover{border-color:var(--line);background:rgba(255,255,255,.03);transform:none}
+ .lk:hover .bdg{transform:none}
+ .card:hover,.bc:hover{transform:none!important;border-color:var(--line);box-shadow:none}
+ .card:hover::before{opacity:0}
+ .bc:hover img,.ph:hover img,.gal a:hover img,.pband:hover img{transform:none;filter:none}
+ .logo:hover img{animation:none}
+ .ft a:hover{color:#aab3bd}
+}
+/* счётчики в шапке: число должно наследовать размер b, а не мелкую подпись */
+.st b span{font:inherit;letter-spacing:inherit;text-transform:none;color:inherit;display:inline}
+.st b{white-space:nowrap}
+.st:nth-child(4) b{font-size:clamp(.9rem,4.2vw,1.25rem);white-space:normal;line-height:1.25}
+@media(min-width:761px){.st:nth-child(4) b{font-size:clamp(1.1rem,2.4vw,1.7rem)}}
+.sticky-cta .btn{min-height:52px}
