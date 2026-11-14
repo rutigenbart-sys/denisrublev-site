@@ -452,3 +452,9 @@ body{letter-spacing:0}
  .about .bgs::after{background:linear-gradient(180deg,rgba(5,6,10,.88) 0,rgba(5,6,10,.5) 22%,rgba(5,6,10,.6) 70%,rgba(5,6,10,.94) 100%)}
  .about .abt .prose p{text-shadow:0 1px 10px rgba(0,0,0,.95),0 0 2px rgba(0,0,0,.9)}
 }
+
+/* v8: лёгкий слой поверх видео — без blend-mode и blur, чтобы видео шло плавно */
+.hero::after{display:none}
+.hero .stats{backdrop-filter:none;-webkit-backdrop-filter:none;background:linear-gradient(180deg,rgba(6,7,10,.55),rgba(6,7,10,.92))}
+.hero video{transform:translateZ(0);backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:opacity}
+.hero .poster{transform:translateZ(0)}

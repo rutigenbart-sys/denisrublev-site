@@ -39,7 +39,7 @@ if(v){var save=navigator.connection&&(navigator.connection.saveData||/2g/.test(n
   v.src=mob?v.dataset.m:v.dataset.d;v.muted=true;v.playsInline=true;v.dataset.want='1';
   var go=function(){v.play().then(function(){v.classList.add('on')}).catch(function(){})};
   v.addEventListener('canplay',go,{once:true});v.load();
-  d.addEventListener('touchstart',function(){if(v.paused&&v.dataset.want==='1')go()},{once:true,passive:true});
+  ['touchstart','pointerdown','scroll','click'].forEach(function(ev){addEventListener(ev,function(){if(v.paused&&v.dataset.want==='1'&&scrollY<innerHeight)go()},{passive:true})});v.addEventListener('stalled',function(){if(v.dataset.want==='1')v.load()});
   d.addEventListener('visibilitychange',function(){if(d.hidden)v.pause();else if(scrollY<innerHeight)go()})}}
 /* галерея */
 var gl=$$('.gal a'),lb=$('.lb'),li=0;
