@@ -37,8 +37,15 @@ if(v){var save=navigator.connection&&(navigator.connection.saveData||/2g/.test(n
  var mob=matchMedia('(max-width:760px) and (orientation:portrait)').matches;
  if(!save&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
   v.src=mob?v.dataset.m:v.dataset.d;v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.playsInline=true;v.dataset.want='1';
-  var go=function(){v.play().then(function(){v.classList.add('on')}).catch(function(){})};
-  v.addEventListener('canplay',go,{once:true});v.load();
+  var go=function(){var pr=v.play();if(pr&&pr.then)pr.then(function(){v.classList.add('on')}).catch(function(){});else v.classList.add('on')};
+  v.addEventListener('canplay',go);v.addEventListener('loadeddata',go);v.addEventListener('playing',function(){v.classList.add('on')});v.load();go();
+  /* страховка: если видео не стартовало или оборвалось — пробуем ещё, затем другой файл */
+  var tries=0,alt=false,otherSrc=mob?v.dataset.d:v.dataset.m;
+  v.addEventListener('error',function(){if(!alt&&otherSrc){alt=true;v.src=otherSrc;v.load();go()}});
+  var rt=setInterval(function(){if(v.classList.contains('on')&&!v.paused&&v.currentTime>0){clearInterval(rt);return}
+   if(++tries>8){clearInterval(rt);return}
+   if(v.error&&!alt&&otherSrc){alt=true;v.src=otherSrc}
+   if(v.readyState<2||v.error)v.load();go()},2500);
   ['touchstart','pointerdown','scroll','click'].forEach(function(ev){addEventListener(ev,function(){if(v.paused&&v.dataset.want==='1'&&scrollY<innerHeight)go()},{passive:true})});v.addEventListener('stalled',function(){if(v.dataset.want==='1')v.load()});
   d.addEventListener('visibilitychange',function(){if(d.hidden)v.pause();else if(scrollY<innerHeight)go()})}}
 /* галерея */
