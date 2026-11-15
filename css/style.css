@@ -493,3 +493,27 @@ background:var(--shade),var(--chrome);background-size:100% 100%,220% 100%;-webki
  .hero .sub.tag b{font-size:1.22rem}
  .hero .sub.tag span{font-size:.93rem;max-width:28ch;color:#e6ebef}
 }
+
+/* ===== v7: мобильное меню компактнее, телефон в одну строку, отклик логотипа ===== */
+.mnav{gap:0;justify-content:flex-start;padding-top:104px;overflow-y:auto}
+.mnav>a{line-height:1.08;padding:9px 0;font-size:clamp(1.55rem,7.2vw,2.3rem)}
+.mnav .mc{margin-top:30px;display:flex;flex-direction:column;gap:8px;font-family:Manrope,sans-serif;font-size:1rem;line-height:1.3;color:var(--mut)}
+.mnav .mc a,.mnav .mc span{font-family:Manrope,sans-serif;text-transform:none;font-size:1.05rem;letter-spacing:.01em;padding:0;line-height:1.3;color:#c9d1d9;white-space:nowrap;transform:none;opacity:1}
+.mnav .mc a{color:#9fd8ff;font-weight:700}
+.mnav .mc .ph1{font-size:clamp(1.15rem,5.4vw,1.5rem);font-weight:700;color:#e6ebf0;letter-spacing:.02em;white-space:nowrap}
+.ct b,.ft a[href^="tel"],.mc .ph1{white-space:nowrap}
+.logo{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.logo img{transition:transform .35s cubic-bezier(.3,1.4,.5,1),filter .35s}
+.logo:active img,.logo.tap img{transform:scale(.93);filter:drop-shadow(0 0 22px rgba(159,216,255,.75)) brightness(1.25)}
+.logo.tap img{animation:lgtap .6s cubic-bezier(.2,.9,.3,1)}
+@keyframes lgtap{0%{transform:scale(.9)}45%{transform:scale(1.1);filter:drop-shadow(0 0 28px rgba(159,216,255,.9)) brightness(1.4)}100%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.logo.tap img{animation:none}}
+
+/* статьи: чистая типографика */
+.art h3{font-size:clamp(1.1rem,2.4vw,1.35rem);margin:30px 0 12px;color:#e6ebf0}
+.art ul,.art ol{margin:0 0 1.2em 1.2em;color:#c6cdd5;padding:0}
+.art li{margin-bottom:.55em}
+.art .toc{margin:26px 0 8px;padding:18px 22px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.025)}
+.art .toc b{display:block;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ice);margin-bottom:10px}
+.art .toc ol{margin:0 0 0 1.1em}.art .toc a{color:#d3dae1}
+.art .note2{margin:26px 0;padding:18px 22px;border-left:3px solid var(--ice);background:rgba(159,216,255,.05);border-radius:0 10px 10px 0;color:#d3dae1}

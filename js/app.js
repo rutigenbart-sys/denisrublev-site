@@ -71,7 +71,7 @@ $$('form.f').forEach(function(f){
   function viaLink(){
    try{navigator.clipboard&&navigator.clipboard.writeText(text)}catch(x){}
    var url=C.tgUser?('https://t.me/'+C.tgUser+'?text='+encodeURIComponent(text)):('https://t.me/+'+(C.phone||'79255857775'));
-   window.open(url,'_blank');ok(C.tgUser?'Открываем Telegram — нажмите «Отправить». Текст заявки уже вставлен.':'Открываем Telegram. Текст заявки скопирован — вставьте его в чат и отправьте.')}
+   var w=window.open(url,'_blank');if(!w)location.href=url;ok(C.tgUser?'Открываем Telegram — нажмите «Отправить». Текст заявки уже вставлен.':'Открываем Telegram. Текст заявки скопирован — вставьте его в чат и отправьте.')}
   if(C.bot&&C.bot.token&&C.bot.chat){btn.disabled=true;msg.className='fmsg';msg.textContent='Отправляем…';
    fetch('https://api.telegram.org/bot'+C.bot.token+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C.bot.chat,text:text,disable_web_page_preview:true})})
     .then(function(r){return r.json()}).then(function(j){btn.disabled=false;if(j.ok)ok('Заявка отправлена! Денис свяжется с вами в ближайшее время.');else viaLink()}).catch(function(){btn.disabled=false;viaLink()})}
@@ -95,5 +95,9 @@ if(!matchMedia('(pointer:coarse)').matches)$$('.card,.bc').forEach(function(c){c
   var u;try{u=new URL(a.href,location.href)}catch(x){return}
   if(u.origin!==location.origin||/\.(pdf|jpg|png|webp|mp4)$/i.test(u.pathname))return;
   if(u.pathname===location.pathname&&u.search===location.search)return;
-  e.preventDefault();pt.classList.add('go');setTimeout(function(){location.href=u.href},560)})})();
+  e.preventDefault();pt.classList.add('go');setTimeout(function(){location.href=u.href},a.closest('.logo')?640:560)})})();
+
+/* ===== логотип: приятный отклик на касание ===== */
+(function(){$$('.logo').forEach(function(l){var t;function go(){l.classList.remove('tap');void l.offsetWidth;l.classList.add('tap');clearTimeout(t);t=setTimeout(function(){l.classList.remove('tap')},650);try{navigator.vibrate&&navigator.vibrate(12)}catch(x){}}
+ l.addEventListener('pointerdown',go,{passive:true});l.addEventListener('touchstart',go,{passive:true})})})();
 })();
