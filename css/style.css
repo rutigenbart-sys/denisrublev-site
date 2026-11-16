@@ -517,3 +517,12 @@ background:var(--shade),var(--chrome);background-size:100% 100%,220% 100%;-webki
 .art .toc b{display:block;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ice);margin-bottom:10px}
 .art .toc ol{margin:0 0 0 1.1em}.art .toc a{color:#d3dae1}
 .art .note2{margin:26px 0;padding:18px 22px;border-left:3px solid var(--ice);background:rgba(159,216,255,.05);border-radius:0 10px 10px 0;color:#d3dae1}
+/* защита от выхода текста за рамки (2026-11-16) */
+.ct>div,.ct>span,.lk>div,.box,.aside,.alay>*,.art,.cts{min-width:0;max-width:100%}
+.ct b,.ct small,.box dd,.box dt,.box h4,.art p,.art li,.art h2,.art h3,.faq summary,.faq p,.bc h3,.bc p{overflow-wrap:break-word;word-break:normal;hyphens:manual}
+.ct b{white-space:normal;overflow-wrap:anywhere}
+.ct[href^="tel"] b{white-space:nowrap;overflow-wrap:normal}
+.ct[href^="mailto"] b{overflow-wrap:anywhere}
+.art ul,.art ol{padding-left:1.2em}
+.art img,.art iframe,.art table{max-width:100%}
+.art table{display:block;overflow-x:auto}
